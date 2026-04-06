@@ -2,4 +2,4 @@
 
 
 #curremcy-changer 
-url = https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@{date}/{apiVersion}/{endpoint}
+url = https://open.er-api.com/v6/latest/
