@@ -15,12 +15,17 @@ function App() {
   const options = Object.keys(currencyData);
 
   const swapCurrency = () => {
-    setFromCurrency(toCurrency);
-    setToCurrency(fromCurrency);
+  // swap currencies
+    const tempFrom = fromCurrency;
+    const tempAmount = amount;
 
-    setResult(amount);
+    setFromCurrency(toCurrency);
+    setToCurrency(tempFrom);
+
+    // swap values correctly
     setAmount(result);
-  }
+    setResult(tempAmount);
+  };
 
   const convertCurrency = () => {
     if (currencyData && currencyData[toCurrency]) {
@@ -60,7 +65,7 @@ function App() {
             </div>
             <div className='relative w-full h-0.5'>
               <button
-              className='absolute left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-white rounded-md bg-blue-600 text-white px-2 py-0.5 mouse-pointer hover:bg-blue-700 transition-colors'
+              className='absolute left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-white rounded-md bg-blue-600 text-white px-2 py-0.5 cursor-pointer hover:bg-blue-700 transition-colors'
               onClick={swapCurrency}
               >Swap</button>
             </div>
@@ -69,14 +74,15 @@ function App() {
               label="to"
               currencyOptions={options}
               amt={result}
-              oncurrencyChange={(currency) => setToCurrency(currency)}
+              onCurrencyChange={(currency) => setToCurrency(currency)}
               defaultCurrency={toCurrency}
-              amtDisable
+              // amtDisable
+              amtChange={(amount) => setResult(isNaN(amount) ? 0 : amount)}
               />
             </div>
             <button
             type='submit'
-            className='w-full bg-blue-600 text-white px-4 py-3 rounded-lg mouse-pointer hover:bg-blue-700 transition-colors'
+            className='w-full bg-blue-600 text-white px-4 py-3 rounded-lg cursor-pointer hover:bg-blue-700 transition-colors'
             
             >Convert {fromCurrency.toUpperCase()} to {toCurrency.toUpperCase()}</button>
 

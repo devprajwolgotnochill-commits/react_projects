@@ -5,7 +5,7 @@ function Inputbox({
     label,
     amt,
     amtChange,
-    oncurrencyChange,
+    onCurrencyChange,
     currencyOptions = [],
     defaultCurrency = 'usd',
     amtDisable = false,
@@ -45,7 +45,7 @@ function Inputbox({
             id=""
             className='rounded-lg px-1 py-1 bg-blue-200 cursor-pointer outline-none '
             value={defaultCurrency}
-            onChange={(e) => oncurrencyChange && oncurrencyChange(e.target.value)}
+            onChange={(e) => onCurrencyChange && onCurrencyChange(e.target.value)}
             disabled={checkCurrDisable}
             >
                 {currencyOptions.map((curry) => (
