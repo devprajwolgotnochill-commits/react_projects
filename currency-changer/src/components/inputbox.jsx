@@ -16,6 +16,7 @@ function Inputbox({
 })
 { //function
     const id = useId();
+    const safeAmt = Number.isFinite(amt) ? amt : null;
 
   return (
     <div 
@@ -27,11 +28,18 @@ function Inputbox({
             <label htmlFor={id} className='text-sm text-gray-500'>{label}</label>
             <input 
             id={id}
-            type='text' 
-            value={amt} 
+            type='number'
+            inputMode='decimal'
+            value={safeAmt} 
             disabled={amtDisable} 
             placeholder='AMT'
-            onChange={(e) => amtChange && amtChange(Number(e.target.value))}
+            onChange={(e) => {
+                if (!amtChange) return;
+                const raw = e.target.value;
+                if (raw.trim() === '') return amtChange(null);
+                const next = Number(raw);
+                amtChange(Number.isFinite(next) ? next : 0);
+            }}
             className='w-40 h-10 rounded-md border border-gray-300 px-2 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100 disabled:border-gray-200'
             />
             
