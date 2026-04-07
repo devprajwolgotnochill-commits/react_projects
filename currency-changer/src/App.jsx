@@ -14,18 +14,6 @@ function App() {
   const currencyData = useCurrencyInfo(fromCurrency);
   const options = Object.keys(currencyData);
 
-  const swapCurrency = () => {
-  // swap currencies
-    const tempFrom = fromCurrency;
-    const tempAmount = amount;
-
-    setFromCurrency(toCurrency);
-    setToCurrency(tempFrom);
-
-    // swap values correctly
-    setAmount(result);
-    setResult(tempAmount);
-  };
 
   const convertCurrency = () => {
     if (currencyData && currencyData[toCurrency]) {
@@ -58,17 +46,12 @@ function App() {
               label="from"
               amt={amount}
               currencyOptions={options}
-              oncurrencyChange={(currency) => setFromCurrency(currency)}
-              amtChange={(amount) => setAmount(isNaN(amount) ? 0 : amount)}
+              onCurrencyChange={(currency) => setFromCurrency(currency)}
+              amtChange={(amount) => setAmount(amount)}
               defaultCurrency={fromCurrency}
               />
             </div>
-            <div className='relative w-full h-0.5'>
-              <button
-              className='absolute left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-white rounded-md bg-blue-600 text-white px-2 py-0.5 cursor-pointer hover:bg-blue-700 transition-colors'
-              onClick={swapCurrency}
-              >Swap</button>
-            </div>
+  
             <div className='w-full mb-1'>
               <Inputbox   
               label="to"
@@ -76,8 +59,8 @@ function App() {
               amt={result}
               onCurrencyChange={(currency) => setToCurrency(currency)}
               defaultCurrency={toCurrency}
-              // amtDisable
-              amtChange={(amount) => setResult(isNaN(amount) ? 0 : amount)}
+              amtChange={(amount) => setAmount(isNaN(amount) ? 0 : amount)}
+              amtDisable={true}
               />
             </div>
             <button
