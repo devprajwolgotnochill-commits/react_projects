@@ -1,9 +1,8 @@
-import React from 'react';
 import About from '../about/about';
 import User from '../user/user';
 import Contact from '../contact/contact';
 
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
     return (
@@ -45,9 +44,9 @@ export default function Home() {
             </div>
 
             <h1 className="text-center text-2xl sm:text-5xl py-10 font-medium">Lorem Ipsum Yojo</h1>
-            {/* <About />
+            <About />
             <User />
-            <Contact /> */}
+            <Contact />
         </div>
     );
 }
