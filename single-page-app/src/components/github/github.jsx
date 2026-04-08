@@ -1,3 +1,4 @@
+import React from 'react'
 import { useEffect } from 'react'
 // import {useLoaderData} from 'react-router-dom'
 
@@ -5,7 +6,7 @@ function Github() {
 
     const [data, setData] = React.useState([])
     useEffect(() => {
-        fetch('https://api.github.com/users/hiteshchoudhary')
+        fetch('https://api.github.com/users/devprajwolgotnochill-commits')
         .then((response) => response.json())
         .then(data => {
             console.log(data)
