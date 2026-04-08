@@ -2,7 +2,7 @@ import About from '../about/about';
 import User from '../user/user';
 import Contact from '../contact/contact';
 import Github from '../github/github.jsx'
-import { githubInfoLoader } from '../github/githubInfoLoader.js'
+// import { githubInfoLoader } from '../github/githubInfoLoader.js'
 
 import { Link } from 'react-router-dom';
 
@@ -50,7 +50,7 @@ export default function Home() {
             <User />
             <Contact />
             <Github />
-            <githubInfoLoader />
+            {/* <githubInfoLoader /> */}
 
         </div>
     );
